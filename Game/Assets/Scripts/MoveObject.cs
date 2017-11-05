@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject : MonoBehaviour {
-
-	public float speed;
-    void Update(){
+public class MoveObject : MonoBehaviour
+{
+    public float speed;
+    void Update()
+    {
         transform.Translate(Vector2.left * speed);
-       
-	}
+    }
 
 }
