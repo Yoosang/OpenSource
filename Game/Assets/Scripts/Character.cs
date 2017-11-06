@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     public Slider HpSlider;
-    public GameObject barriertest;
     public Text DieText;
 
     // Update is called once per frame
@@ -33,6 +32,7 @@ public class Character : MonoBehaviour
         {
             Application.LoadLevel("Menu");
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D col)

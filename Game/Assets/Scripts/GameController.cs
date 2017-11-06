@@ -8,17 +8,11 @@ public class GameController : MonoBehaviour
     public GameObject enemyMakePosition;
     public GameObject SpikePrefab, BarrierPrefab;
     public Text ScoreText;
-    public Slider HpSlider;
+    public Slider HpSlider, GaugeSlider;
     int score = 0;
-    // Use this for initialization
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
+	bool flag = true;
+	GameObject enemybarrier,enemySpike;
+	void Update()
     {
         if(HpSlider.value != 0)
         {
@@ -29,21 +23,38 @@ public class GameController : MonoBehaviour
                 switch (enemyNum)
                 {
                     case 1:
-                        GameObject enemybarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
+                        enemybarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
                         enemybarrier.gameObject.tag = "test";
                         break;
                     case 2:
-                        GameObject enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
+                        enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
                         enemySpike.gameObject.tag = "test";
                         break;
                 }
             }
         }
-        if (HpSlider.value == 0)
-        {
-            Time.timeScale = 0;
-        }
+
+		/*  spike만 멈춤, spike를 밑에 쓰면 barrier만 멈춤
+		if (HpSlider.value == 0) {
+			enemySpike.GetComponent<MoveObject> ().speed = 0f;
+			enemybarrier.GetComponent<MoveObject> ().speed = 0f;
+		}
+		*/
 
         ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
+
+		if (flag == true && HpSlider.value != 0) {   //게이지 채우기
+			GaugeSlider.value += 0.0015f;
+			if (GaugeSlider.value == 1) {
+				flag = false;
+			}
+		}
+
+		else if (flag == false && HpSlider.value != 0) {   //게지가 꽉 찬 후 다시 줄어들기
+			GaugeSlider.value -= 0.0025f;
+			if (GaugeSlider.value == 0) {
+				flag = true;
+			}
+		}
     }
 }
