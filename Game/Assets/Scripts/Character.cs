@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            gameObject.GetComponent<Animator>().Play("Jump");
+            gameObject.GetComponent<Animator>().Play("jump");
             StartCoroutine(JumpBtn());
         }
         if (HpSlider.value == 0)
