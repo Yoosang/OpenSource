@@ -11,10 +11,11 @@ public class GameController : MonoBehaviour
     public Slider HpSlider, GaugeSlider;
     int score = 0;
 	bool flag = true;
-	GameObject enemybarrier,enemySpike;
-	void Update()
+    public GameObject enemyBarrier, enemySpike;
+
+    void Update()
     {
-        if(HpSlider.value != 0)
+        if (HpSlider.value != 0)
         {
             score++;  // 프레임마다 1점씩 증가
             if (score % 100 == 0)
@@ -23,23 +24,23 @@ public class GameController : MonoBehaviour
                 switch (enemyNum)
                 {
                     case 1:
-                        enemybarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
-                        enemybarrier.gameObject.tag = "test";
+                        enemyBarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
+                        enemyBarrier.gameObject.tag = "test"; 
                         break;
                     case 2:
                         enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
-                        enemySpike.gameObject.tag = "test";
+                        enemySpike.gameObject.tag = "test"; 
                         break;
                 }
             }
+            
         }
-
-		/*  spike만 멈춤, spike를 밑에 쓰면 barrier만 멈춤
-		if (HpSlider.value == 0) {
-			enemySpike.GetComponent<MoveObject> ().speed = 0f;
-			enemybarrier.GetComponent<MoveObject> ().speed = 0f;
-		}
-		*/
+        //  spike만 멈춤, spike를 밑에 쓰면 barrier만 멈춤
+        
+        if (HpSlider.value == 0){
+            enemyBarrier.GetComponent<MoveObject>().speed = 0f;
+            enemySpike.GetComponent<MoveObject>().speed = 0f;
+        }
 
         ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
 

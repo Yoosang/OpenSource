@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     void Update()
     {
         DieText.enabled = false;
-
+        Time.timeScale = 1; // 게임오버 후 재 시작할때 다시 움직이기 위해서
         if (Input.GetKeyDown(KeyCode.Space))
         {
             gameObject.GetComponent<Animator>().Play("jump");
