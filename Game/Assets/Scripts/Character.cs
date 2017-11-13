@@ -5,13 +5,11 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     public Slider HpSlider;
-    public Text DieText;
 
     // Update is called once per frame
     void Update()
     {
-        DieText.enabled = false;
-        Time.timeScale = 1; // 게임오버 후 재 시작할때 다시 움직이기 위해서
+        Time.timeScale = 1;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             gameObject.GetComponent<Animator>().Play("jump");
@@ -19,20 +17,9 @@ public class Character : MonoBehaviour
         }
         if (HpSlider.value == 0)
         {
-            GameOver();
+            GameController.Instance().GameOver();
             Time.timeScale = 0; // 죽었을 때 캐릭터 모습이 없어서 정지 기킨 것
         }
-    }
-
-    private void GameOver()
-    {
-        DieText.enabled = true;
-        enabled = true;
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.LoadLevel("Menu");
-        }
-
     }
 
     void OnCollisionEnter2D(Collision2D col)

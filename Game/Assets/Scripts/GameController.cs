@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    // 싱글톤
+    static GameController instance; 
+
+    public static GameController Instance() { return instance; }
     public GameObject enemyMakePosition;
     public GameObject SpikePrefab, BarrierPrefab;
     public Text ScoreText;
@@ -12,34 +16,51 @@ public class GameController : MonoBehaviour
     int score = 0;
 	bool flag = true;
     public GameObject enemyBarrier, enemySpike;
+    bool isPlay = true;
+    public Text DieText;
+
+    public bool IsPlaying()
+    {
+        return isPlay;
+    }
+
+    private void Start()
+    {
+        instance = this;
+    }
+
+
 
     void Update()
     {
-        if (HpSlider.value != 0)
+        DieText.enabled = false;
+        if (IsPlaying() == true)
         {
             score++;  // 프레임마다 1점씩 증가
             if (score % 100 == 0)
             {  //100프레임마다 적 생성
-                int enemyNum = Random.Range(1, 3);
-                switch (enemyNum)
+                if(IsPlaying() == true)
                 {
-                    case 1:
-                        enemyBarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
-                        enemyBarrier.gameObject.tag = "test"; 
-                        break;
-                    case 2:
-                        enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
-                        enemySpike.gameObject.tag = "test"; 
-                        break;
+                    int enemyNum = Random.Range(1, 3);
+                    switch (enemyNum)
+                    {
+                        case 1:
+                            enemyBarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
+                            enemyBarrier.gameObject.tag = "test";
+                            break;
+                        case 2:
+                            enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
+                            enemySpike.gameObject.tag = "test";
+                            break;
+                    }
                 }
+                
             }
             
         }
-        //  spike만 멈춤, spike를 밑에 쓰면 barrier만 멈춤
-        
-        if (HpSlider.value == 0){
-            enemyBarrier.GetComponent<MoveObject>().speed = 0f;
-            enemySpike.GetComponent<MoveObject>().speed = 0f;
+        if (IsPlaying() == false)
+        {
+            GameOver();
         }
 
         ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
@@ -57,5 +78,16 @@ public class GameController : MonoBehaviour
 				flag = true;
 			}
 		}
+    }
+
+    public void GameOver()
+    {
+        isPlay = false;
+        DieText.enabled = true;
+        enabled = true;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.LoadLevel("Menu");
+        }
     }
 }

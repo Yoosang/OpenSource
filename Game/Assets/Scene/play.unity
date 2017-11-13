@@ -885,7 +885,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
-  DieText: {fileID: 1840377196}
 --- !u!61 &1052291330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1320,7 +1319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
-  DieText: {fileID: 1840377196}
 --- !u!61 &1470464918
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1453,7 +1451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
-  DieText: {fileID: 1840377196}
 --- !u!50 &1504309314
 Rigidbody2D:
   serializedVersion: 4
@@ -2209,6 +2206,9 @@ MonoBehaviour:
   ScoreText: {fileID: 905429142}
   HpSlider: {fileID: 1799650306}
   GaugeSlider: {fileID: 1550701548}
+  enemyBarrier: {fileID: 0}
+  enemySpike: {fileID: 0}
+  DieText: {fileID: 1840377196}
 --- !u!4 &1966597553
 Transform:
   m_ObjectHideFlags: 0
