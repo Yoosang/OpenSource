@@ -673,7 +673,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2137276284}
-        m_MethodName: SceneChangeRun
+        m_MethodName: SceneChangeSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
