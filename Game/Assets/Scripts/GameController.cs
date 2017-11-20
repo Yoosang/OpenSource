@@ -11,10 +11,13 @@ public class GameController : MonoBehaviour
     public static GameController Instance() { return instance; }
     public GameObject enemyMakePosition;
     public GameObject SpikePrefab, BarrierPrefab;
+    public GameObject CoinPrefab, CoinMakePosition;
     public Text ScoreText;
+    public Text coinText;
     public Slider HpSlider, GaugeSlider;
     int score = 0;
-	bool flag = true;
+    public int coin = 0;
+    bool flag = true;
     public GameObject enemyBarrier, enemySpike;
     bool isPlay = true;
     public Text DieText;
@@ -56,7 +59,12 @@ public class GameController : MonoBehaviour
                 }
                 
             }
-            
+            if (score % 170 == 0)
+            {
+                GameObject x = Instantiate(CoinPrefab, CoinMakePosition.transform.position, Quaternion.identity);
+
+            }
+
         }
         if (IsPlaying() == false)
         {
@@ -64,8 +72,8 @@ public class GameController : MonoBehaviour
         }
 
         ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
-
-		if (flag == true && HpSlider.value != 0) {   //게이지 채우기
+        coinText.text = coin.ToString();
+        if (flag == true && HpSlider.value != 0) {   //게이지 채우기
 			GaugeSlider.value += 0.0015f;
 			if (GaugeSlider.value == 1) {
 				flag = false;

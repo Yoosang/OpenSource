@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     public Slider HpSlider;
-
+    public GameController GC;
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +19,14 @@ public class Character : MonoBehaviour
         {
             GameController.Instance().GameOver();
             Time.timeScale = 0; // 죽었을 때 캐릭터 모습이 없어서 정지 기킨 것
+        }
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.transform.tag.Equals("Coin"))
+        {
+            GC.coin++;
+            Destroy(col.gameObject);
         }
     }
 

@@ -572,6 +572,7 @@ RectTransform:
   - {fileID: 850484894}
   - {fileID: 1840377195}
   - {fileID: 1880027926}
+  - {fileID: 1187270677}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -885,6 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
+  GC: {fileID: 0}
 --- !u!61 &1052291330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -894,7 +896,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0041878223, y: -0.008375645}
@@ -906,7 +908,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 0.82411146, y: 1.5727415}
   m_EdgeRadius: 0
@@ -1002,6 +1004,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1187270676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1187270677}
+  m_Layer: 5
+  m_Name: CoinMakePostion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1187270677
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187270676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 76.8, y: 76.8, z: 76.8}
+  m_Children: []
+  m_Father: {fileID: 531501035}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 220.3291, y: 80.58263}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1294917642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
+  GC: {fileID: 0}
 --- !u!61 &1470464918
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1328,7 +1364,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.057950497, y: -0.04011959}
@@ -1340,7 +1376,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 1.0140991, y: 1.6797608}
   m_EdgeRadius: 0
@@ -1451,6 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
+  GC: {fileID: 0}
 --- !u!50 &1504309314
 Rigidbody2D:
   serializedVersion: 4
@@ -1480,7 +1517,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.044281006}
@@ -1492,7 +1529,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 0.87118244, y: 1.5114379}
   m_EdgeRadius: 0
@@ -2203,9 +2240,13 @@ MonoBehaviour:
     type: 2}
   BarrierPrefab: {fileID: 1371894280975914, guid: 6edbda752797590428d0ec3b8ab3a482,
     type: 2}
+  CoinPrefab: {fileID: 1728417810800226, guid: 184286ec7bb861843a837e00cf23260c, type: 2}
+  CoinMakePosition: {fileID: 1187270676}
   ScoreText: {fileID: 905429142}
+  coinText: {fileID: 0}
   HpSlider: {fileID: 1799650306}
   GaugeSlider: {fileID: 1550701548}
+  coin: 0
   enemyBarrier: {fileID: 0}
   enemySpike: {fileID: 0}
   DieText: {fileID: 1840377196}
