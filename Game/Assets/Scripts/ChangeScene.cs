@@ -15,4 +15,8 @@ public class ChangeScene : MonoBehaviour {
 	public void SceneChangeMenu(){
 		SceneManager.LoadScene ("Menu");
 	}
+
+	public void SceneChangeSelect(){
+		SceneManager.LoadScene ("SelectChar");
+	}
 }
