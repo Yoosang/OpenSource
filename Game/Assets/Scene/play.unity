@@ -887,6 +887,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
   GC: {fileID: 0}
+  charac1: {fileID: 1470464915}
+  charac2: {fileID: 1504309312}
+  charac3: {fileID: 1052291328}
 --- !u!61 &1052291330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -980,7 +983,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 2c95f18ad7b0e4f4b9b09144f646dd0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -998,7 +1001,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1052291328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0287175, y: -3.1264923, z: 0}
+  m_LocalPosition: {x: -14.02, y: -3.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1355,6 +1358,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
   GC: {fileID: 0}
+  charac1: {fileID: 1470464915}
+  charac2: {fileID: 1504309312}
+  charac3: {fileID: 1052291328}
 --- !u!61 &1470464918
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1431,7 +1437,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: d6ffbfe63df4bdf438eeaee4ca59370d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1449,7 +1455,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1470464915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.106, y: -3.0551686, z: 0}
+  m_LocalPosition: {x: -11.73, y: -3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1488,6 +1494,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpSlider: {fileID: 1799650306}
   GC: {fileID: 0}
+  charac1: {fileID: 1470464915}
+  charac2: {fileID: 1504309312}
+  charac3: {fileID: 1052291328}
 --- !u!50 &1504309314
 Rigidbody2D:
   serializedVersion: 4
@@ -1564,7 +1573,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 4ca78b94cbb200949a394f5b1d8fdc95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1582,7 +1591,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1504309312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.355036, y: -3.0551686, z: 0}
+  m_LocalPosition: {x: -12.91, y: -3.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

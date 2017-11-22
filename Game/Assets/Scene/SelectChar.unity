@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 142722365}
   - component: {fileID: 142722364}
   - component: {fileID: 142722369}
+  - component: {fileID: 142722370}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -284,6 +285,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0a9c2136d40b64c8d3d3c1d0d63739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &142722370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 142722363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b6849b56636ce4da2ac3e7915e2806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &171646463
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +361,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 171646463}
   m_LocalRotation: {x: -0, y: -0, z: 0.07016948, w: -0.99753517}
-  m_LocalPosition: {x: 548, y: -202, z: 0}
+  m_LocalPosition: {x: 548, y: -215, z: 0}
   m_LocalScale: {x: 227, y: 195, z: 1}
   m_Children: []
   m_Father: {fileID: 1966322049}
@@ -517,13 +529,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 142722369}
-        m_MethodName: SceneChangeRun
-        m_Mode: 1
+      - m_Target: {fileID: 142722370}
+        m_MethodName: SelectCharac
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -628,7 +640,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 416487894}
   m_LocalRotation: {x: -0, y: -0, z: 0.103751674, w: 0.9946033}
-  m_LocalPosition: {x: -518, y: -189, z: 0}
+  m_LocalPosition: {x: -508, y: -199, z: 0}
   m_LocalScale: {x: 215.05466, y: 197.55649, z: 1}
   m_Children: []
   m_Father: {fileID: 1966322049}
@@ -699,8 +711,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 468039488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.037, y: 0.028, z: 0}
-  m_LocalScale: {x: 4.001665, y: 2.974131, z: 1}
+  m_LocalPosition: {x: -0.037, y: -0.016, z: 0}
+  m_LocalScale: {x: 4.001665, y: 3.0005784, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -981,7 +993,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1635005926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16, y: -148, z: 0}
+  m_LocalPosition: {x: -16, y: -158, z: 0}
   m_LocalScale: {x: 227, y: 220, z: 1}
   m_Children: []
   m_Father: {fileID: 1966322049}
@@ -1062,13 +1074,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 142722369}
-        m_MethodName: SceneChangeRun
-        m_Mode: 1
+      - m_Target: {fileID: 142722370}
+        m_MethodName: SelectCharac
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1141,7 +1153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.2, y: -144}
+  m_AnchoredPosition: {x: -19, y: -144.00003}
   m_SizeDelta: {x: 236.4, y: 374.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806543172
@@ -1183,13 +1195,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 142722369}
-        m_MethodName: SceneChangeRun
-        m_Mode: 1
+      - m_Target: {fileID: 142722370}
+        m_MethodName: SelectCharac
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

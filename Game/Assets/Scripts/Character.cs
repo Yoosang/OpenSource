@@ -6,6 +6,19 @@ public class Character : MonoBehaviour
 {
     public Slider HpSlider;
     public GameController GC;
+	public GameObject charac1, charac2,charac3;
+
+	void Start(){ //캐릭터 선택시 한 명씩 나오게
+		if (SelectCharacter.characterNumber == 1) {
+			charac1.transform.Translate (Vector2.right * 2.0f);
+		}
+		else if (SelectCharacter.characterNumber == 2) {
+			charac2.transform.Translate (Vector2.right * 2.3f);
+		}
+		else if (SelectCharacter.characterNumber == 3) {
+			charac3.transform.Translate (Vector2.right * 2.6f);
+		}
+	}
     // Update is called once per frame
     void Update()
     {
