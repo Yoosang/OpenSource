@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition.transform.position, Quaternion.identity);
 
             }
-
+            coin++;
         }
         if (IsPlaying() == false)
         {

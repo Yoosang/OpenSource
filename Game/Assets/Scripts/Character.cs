@@ -38,7 +38,7 @@ public class Character : MonoBehaviour
     {
         if (col.transform.tag.Equals("Coin"))
         {
-            GC.coin++;
+            
             Destroy(col.gameObject);
         }
     }
