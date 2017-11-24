@@ -47,6 +47,7 @@ public class Character : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     GetComponent<Rigidbody2D>().AddForce(Vector2.up * 270f);
+					GetComponent<Animator> ().Play ("jump");
                     jumpCount--; //점프 시 점프수를 하나씩 감소
                 }
             }
