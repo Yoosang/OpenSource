@@ -11,12 +11,15 @@ public class bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (transform.position.x > 10.33f)// 화면 밖으로 가면 삭제
+        {
+            Destroy(gameObject);
+        }
+    }
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.tag == "test")
+		if (col.gameObject.tag == "enemy")
 		{
 			Destroy (col.gameObject);
 			Destroy (gameObject);

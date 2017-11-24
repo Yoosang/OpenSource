@@ -68,14 +68,14 @@ public class GameController : MonoBehaviour
 							if (GameController.Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemyBarrier.GetComponent<MoveObject> ().speed = 0.3f;
 							}
-							enemyBarrier.gameObject.tag = "test";
+							enemyBarrier.gameObject.tag = "enemy";
                             break;
                         case 2:
                             enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
 							if (GameController.Gaugeflag == false && SelectCharacter.characterNumber == 2) {  // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemySpike.GetComponent<MoveObject> ().speed = 0.3f;
 							}
-							enemySpike.gameObject.tag = "test";
+							enemySpike.gameObject.tag = "enemy";
                             break;
                     }
                 }

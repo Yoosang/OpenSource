@@ -11,8 +11,10 @@ public class Character : MonoBehaviour
 	public GameObject bulletPrefab,bulletPosition;
 	GameObject bull;
 	Quaternion rot;
+    bool isGround = false; //캐릭터가 점프 중인지를 확인하기 위한 변수
+    int jumpCount = 2; // 2단 점프를 위한 점프수 제한
 
-	void Start(){ //캐릭터 선택시 한 명씩 나오게
+    void Start(){ //캐릭터 선택시 한 명씩 나오게
 		rot = transform.localRotation;
 		rot.eulerAngles = new Vector3 (0, 0, -90);
 		if (SelectCharacter.characterNumber == 1) {
@@ -31,16 +33,23 @@ public class Character : MonoBehaviour
 			Destroy (charac2);
 		}
 		rend = charac3.GetComponent<Renderer> ();
+        jumpCount = 0; //시작 할때 점프수를 0으로 초기화
 
-	}
+    }
     // Update is called once per frame
     void Update()
     {
         Time.timeScale = 1;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isGround)
         {
-            gameObject.GetComponent<Animator>().Play("jump");
-            StartCoroutine(JumpBtn());
+            if (jumpCount > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    GetComponent<Rigidbody2D>().AddForce(Vector2.up * 270f);
+                    jumpCount--; //점프 시 점프수를 하나씩 감소
+                }
+            }
         }
         if (HpSlider.value == 0)
         {
@@ -68,14 +77,13 @@ public class Character : MonoBehaviour
     {
         if (col.transform.tag.Equals("Coin"))
         {
-            
             Destroy(col.gameObject);
         }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-		if (col.gameObject.tag == "test")
+		if (col.gameObject.tag == "enemy")
 		{
 
 			if(GameController.Gaugeflag == true)
@@ -86,13 +94,14 @@ public class Character : MonoBehaviour
 			Destroy (col.gameObject);
 
 		}
+        if (col.gameObject.tag == "ground") // 캐릭터가 땅에 있는지를 확인하기 위해서 floor에 ground 라는 tag를 만들어서 넣어줬다
+        {
+            isGround = true;
+            jumpCount = 2; // 땅에 있으면 점프수 2로 초기화
+        }
     }
 
-    IEnumerator JumpBtn()
-    {
-        GetComponent<Rigidbody2D>().AddForce(Vector2.up * 330f);
-        yield return new WaitForSeconds(1.0f);
-    }
+    
 
 	void Shooting(){ // 슈팅 함수
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
