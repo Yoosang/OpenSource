@@ -5,6 +5,11 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
     public float speed ;
+    void Start()
+    {
+        Destroy(gameObject, 10f);
+
+    }
     void Update()
     {
         if (GameController.Instance().IsPlaying() == false)

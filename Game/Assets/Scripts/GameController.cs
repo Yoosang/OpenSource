@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance() { return instance; }
     public GameObject enemyMakePosition;
     public GameObject SpikePrefab, BarrierPrefab;
-    public GameObject CoinPrefab, CoinMakePosition;
+    public GameObject CoinPrefab, CoinMakePosition, CoinMakePosition1, CoinMakePosition2, CoinMakePosition3, CoinMakePosition4;
     public Text ScoreText;
     public Text coinText;
     public Slider HpSlider, GaugeSlider;
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
                 {
                     int enemyNum = Random.Range(1, 3);
                     switch (enemyNum)
-                    {
+                    {   
                         case 1:
                             enemyBarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
 							if (GameController.Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 캐릭터2 필살기 장애물 속도 빠르게 
@@ -86,8 +86,28 @@ public class GameController : MonoBehaviour
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition.transform.position, Quaternion.identity);
 
             }
-            coin++;
-			if (Gaugeflag == false && SelectCharacter.characterNumber == 1 && count<100) {  // 필살기 사용 설명 나옴
+
+            if (score % 170 == 0)
+            {
+                GameObject x = Instantiate(CoinPrefab, CoinMakePosition1.transform.position, Quaternion.identity);
+
+            }
+            if (score % 170 == 0)
+            {
+                GameObject x = Instantiate(CoinPrefab, CoinMakePosition2.transform.position, Quaternion.identity);
+
+            }
+            if (score % 170 == 0)
+            {
+                GameObject x = Instantiate(CoinPrefab, CoinMakePosition3.transform.position, Quaternion.identity);
+
+            }
+            if (score % 170 == 0)
+            {
+                GameObject x = Instantiate(CoinPrefab, CoinMakePosition4.transform.position, Quaternion.identity);
+
+            }
+            if (Gaugeflag == false && SelectCharacter.characterNumber == 1 && count<100) {  // 필살기 사용 설명 나옴
 				count++;
 				descrip.enabled = true;
 			}
