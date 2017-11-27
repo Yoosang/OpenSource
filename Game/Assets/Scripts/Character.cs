@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     int jumpCount = 2; // 2단 점프를 위한 점프수 제한
 
     void Start(){ //캐릭터 선택시 한 명씩 나오게
+		
 		rot = transform.localRotation;
 		rot.eulerAngles = new Vector3 (0, 0, -90);
 		if (SelectCharacter.characterNumber == 1) {
@@ -39,12 +40,13 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		
         Time.timeScale = 1;
         if (isGround)
         {
             if (jumpCount > 0)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space)) 
                 {
                     GetComponent<Rigidbody2D>().AddForce(Vector2.up * 270f);
 					GetComponent<Animator> ().Play ("jump");
@@ -65,15 +67,18 @@ public class Character : MonoBehaviour
 			}
 			else if (SelectCharacter.characterNumber == 3) {
 				rend.material.color = new Color (rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.4f);  // 투명화
-
+			
 			}
 
 		} 
 		else if (GameController.Gaugeflag == true) {
 			rend.material.color = new Color (rend.material.color.r, rend.material.color.g, rend.material.color.b, 1f); // 원래 색으로 
+
 		}
 
     }
+
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.transform.tag.Equals("Coin"))

@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public Text coinText;
     public Slider HpSlider, GaugeSlider;
     int score = 0;
+	int frame=0;
     public int coin = 0;
     bool flag = true;
 	public static bool Gaugeflag = true;
@@ -43,7 +44,12 @@ public class GameController : MonoBehaviour
 		descrip.enabled = false;
         if (IsPlaying() == true)
         {
-            score++;  // 프레임마다 1점씩 증가
+			frame++;  // 프레임마다 1점씩 증가
+			if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 부스터 사용시에는 점수가 빨리 오름
+				score += 3;
+			} else {
+				score++;
+			}
 			if (Gaugeflag == true && HpSlider.value != 0) {   //게이지 채우기
 				GaugeSlider.value += 0.0015f;  //0.0015
 				if (GaugeSlider.value == 1) {
@@ -56,7 +62,7 @@ public class GameController : MonoBehaviour
 					Gaugeflag = true;
 				}
 			}
-            if (score % 100 == 0)
+			if (frame % 100 == 0)
             {  //100프레임마다 적 생성
                 if(IsPlaying() == true)
                 {
@@ -81,28 +87,28 @@ public class GameController : MonoBehaviour
                 }
                 
             }
-            if (score % 170 == 0)
+			if (frame % 170 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition.transform.position, Quaternion.identity);
 
             }
 
-            if (score % 170 == 0)
+			if (frame % 170 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition1.transform.position, Quaternion.identity);
 
             }
-            if (score % 170 == 0)
+			if (frame % 170 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition2.transform.position, Quaternion.identity);
 
             }
-            if (score % 170 == 0)
+			if (frame % 170 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition3.transform.position, Quaternion.identity);
 
             }
-            if (score % 170 == 0)
+			if (frame % 170 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition4.transform.position, Quaternion.identity);
 

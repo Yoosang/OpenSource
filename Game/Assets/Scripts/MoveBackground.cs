@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoveBackground : MonoBehaviour {
 
-	public const float scrollSpeed = 0.03f; 
+
+	public float scrollSpeed = 0.03f; 
 	//스크롤할 속도를 상수로 지정해 줍니다.
 	private Material thisMaterial;
 	//Quad의 Material 데이터를 받아올 객체를 선언합니다
@@ -18,6 +19,11 @@ public class MoveBackground : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (GameController.Gaugeflag == true)
+			scrollSpeed = 0.03f; 
+		else if (GameController.Gaugeflag == false && SelectCharacter.characterNumber == 2) {  // 부스터 상태일 때 배경 속도 빠르게 
+			scrollSpeed = 0.3f;
+		}
 		Vector2 newOffset = thisMaterial.mainTextureOffset;
 		// 새롭게 지정해줄 OffSet 객체를 선언합니다.
 		newOffset.Set(newOffset.x + (scrollSpeed * Time.deltaTime),0 );
