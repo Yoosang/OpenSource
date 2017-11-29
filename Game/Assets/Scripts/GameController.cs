@@ -71,15 +71,23 @@ public class GameController : MonoBehaviour
                     {   
                         case 1:
                             enemyBarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
-							if (GameController.Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 캐릭터2 필살기 장애물 속도 빠르게 
+							enemyBarrier.GetComponent<BoxCollider2D> ().isTrigger = false; 
+							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemyBarrier.GetComponent<MoveObject> ().speed = 0.3f;
+							}
+							else if (Gaugeflag == false && SelectCharacter.characterNumber == 3) { // 투명화 상태에서는 장애물을 파괴하지 않게 
+								enemyBarrier.GetComponent<BoxCollider2D> ().isTrigger = true; 
 							}
 							enemyBarrier.gameObject.tag = "enemy";
                             break;
                         case 2:
                             enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
-							if (GameController.Gaugeflag == false && SelectCharacter.characterNumber == 2) {  // 캐릭터2 필살기 장애물 속도 빠르게 
+							enemySpike.GetComponent<BoxCollider2D> ().isTrigger = false; 
+							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) {  // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemySpike.GetComponent<MoveObject> ().speed = 0.3f;
+							}
+							else if (Gaugeflag == false && SelectCharacter.characterNumber == 3) { // 투명화 상태에서는 장애물을 파괴하지 않게 
+								enemySpike.GetComponent<BoxCollider2D> ().isTrigger = true; 
 							}
 							enemySpike.gameObject.tag = "enemy";
                             break;
@@ -124,7 +132,7 @@ public class GameController : MonoBehaviour
         }
 
         ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
-        coinText.text = coin.ToString();
+		coinText.text = "coin : " + coin;
        
     }
 

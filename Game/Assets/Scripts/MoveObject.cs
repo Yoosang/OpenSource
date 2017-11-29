@@ -7,6 +7,7 @@ public class MoveObject : MonoBehaviour
 	GameObject effect;
 	public GameObject destroyEffect;
     public float speed ;
+	int count=0;
     void Start()
     {
         Destroy(gameObject, 10f);
@@ -14,6 +15,8 @@ public class MoveObject : MonoBehaviour
     }
     void Update()
     {
+
+		count++;
         if (GameController.Instance().IsPlaying() == false)
             return;
 
@@ -22,6 +25,8 @@ public class MoveObject : MonoBehaviour
         {
             Destroy(gameObject);
         }
+		if (count == 10)  //effect삭제
+			Destroy (effect); 
     }
 
 
@@ -29,6 +34,7 @@ public class MoveObject : MonoBehaviour
 		if (destroyEffect != null) {
 			effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
 		}
+		count = 0;  
 	}
 
 }

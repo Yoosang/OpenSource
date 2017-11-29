@@ -113,7 +113,9 @@ public class Character : MonoBehaviour
 
 	void Shooting(){ // 슈팅 함수
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
-			bull = Instantiate(bulletPrefab, bulletPosition.transform.position, Quaternion.identity);
+			Vector3 bulletPos = transform.position;
+			bulletPos.x += 1;
+			bull = Instantiate(bulletPrefab, bulletPos, Quaternion.identity);
 			bull.transform.localRotation = rot;  // 총알그림을 90도 회전 시킴
 		} 
 		bull.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 100f);  // 총알을 오른쪽으로 나게 함
