@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
+	GameObject effect;
+	public GameObject destroyEffect;
     public float speed ;
     void Start()
     {
@@ -21,5 +23,12 @@ public class MoveObject : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
+	public void DestroyBarrier(){
+		if (destroyEffect != null) {
+			effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+		}
+	}
 
 }

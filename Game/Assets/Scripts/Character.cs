@@ -98,6 +98,7 @@ public class Character : MonoBehaviour
 			else if (GameController.Gaugeflag == false && SelectCharacter.characterNumber==1) { // 1번 캐릭터 제외, 필살기를 사용중에는 hp가 닳지 않음
 				HpSlider.value -= 0.01f;
 			} 
+			col.transform.GetComponent<MoveObject> ().DestroyBarrier ();
 			Destroy (col.gameObject);
 
 		}
