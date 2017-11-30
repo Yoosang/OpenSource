@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
 
         if (IsPlaying() == true)
         {
-            timer += Time.deltaTime; 
+            timer += 0.025f;
             pos = new Vector3(27, -4, 0);
 
             if (timer > 8f) //시간에 따라 땅 생성
