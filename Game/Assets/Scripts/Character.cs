@@ -54,7 +54,7 @@ public class Character : MonoBehaviour
                 }
             }
         }
-        if (HpSlider.value == 0)
+        if (HpSlider.value == 0|| transform.position.y < -5)
         {
             GameController.Instance().GameOver();
             Time.timeScale = 0; // 죽었을 때 캐릭터 모습이 없어서 정지 기킨 것

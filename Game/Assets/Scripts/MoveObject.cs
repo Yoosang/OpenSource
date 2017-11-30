@@ -10,7 +10,7 @@ public class MoveObject : MonoBehaviour
 	int count=0;
     void Start()
     {
-        Destroy(gameObject, 10f);
+        
 
     }
     void Update()
@@ -21,7 +21,7 @@ public class MoveObject : MonoBehaviour
             return;
 
         transform.Translate(Vector2.left * speed);
-        if (transform.position.x < -9)// 장애물을 넘어서 화면 밖으로 가면 삭제
+        if (transform.position.x < -100f)// 장애물을 넘어서 화면 밖으로 가면 삭제
         {
             Destroy(gameObject);
         }

@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public GameObject enemyMakePosition;
     public GameObject SpikePrefab, BarrierPrefab;
     public GameObject CoinPrefab, CoinMakePosition, CoinMakePosition1, CoinMakePosition2, CoinMakePosition3, CoinMakePosition4;
+    public GameObject FloorPrefab;
     public Text ScoreText;
     public Text coinText;
     public Slider HpSlider, GaugeSlider;
@@ -25,6 +26,8 @@ public class GameController : MonoBehaviour
     public Text DieText;
 	public Text descrip;
 	int count=0;
+    float timer;
+    Vector3 pos;
 
     public bool IsPlaying()
     {
@@ -36,15 +39,23 @@ public class GameController : MonoBehaviour
         instance = this;
     }
 
-
-
     void Update()
     {
         DieText.enabled = false;
 		descrip.enabled = false;
+
         if (IsPlaying() == true)
         {
-			frame++;  // 프레임마다 1점씩 증가
+            timer += Time.deltaTime; 
+            pos = new Vector3(27, -4, 0);
+
+            if (timer > 8f) //시간에 따라 땅 생성
+            {
+                Instantiate(FloorPrefab, pos, Quaternion.identity);
+                timer = 0;
+            }
+
+            frame++;  // 프레임마다 1점씩 증가
 			if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 부스터 사용시에는 점수가 빨리 오름
 				score += 3;
 			} else {
