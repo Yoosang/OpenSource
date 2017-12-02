@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
 	Quaternion rot;
     bool isGround = false; //캐릭터가 점프 중인지를 확인하기 위한 변수
     int jumpCount = 2; // 2단 점프를 위한 점프수 제한
+    public SoundManager soundManager; //효과음 변수
 
     void Start(){ //캐릭터 선택시 한 명씩 나오게
 		
@@ -51,6 +52,7 @@ public class Character : MonoBehaviour
                     GetComponent<Rigidbody2D>().AddForce(Vector2.up * 270f);
 					GetComponent<Animator> ().Play ("jump");
                     jumpCount--; //점프 시 점프수를 하나씩 감소
+                    soundManager.JumpSound(); //점프 효과음
                 }
             }
         }
@@ -85,6 +87,7 @@ public class Character : MonoBehaviour
         {
             GC.coin++;
             Destroy(col.gameObject);
+            soundManager.CoinSound(); //동전효과음
         }
     }
 

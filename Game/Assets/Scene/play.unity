@@ -303,6 +303,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 307477930}
+--- !u!1 &519793597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 519793599}
+  - component: {fileID: 519793598}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &519793598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519793597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68e54e1cee69a74090bcd25d5bdd7c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSound: {fileID: 8300000, guid: f26a726e31c137b4190e144fd7e8e588, type: 3}
+  coinSound: {fileID: 8300000, guid: df300376202c846438cb27180cbaf7bc, type: 3}
+--- !u!4 &519793599
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519793597}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &531501031
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +762,7 @@ MonoBehaviour:
   charac3: {fileID: 1052291328}
   bulletPrefab: {fileID: 0}
   bulletPosition: {fileID: 0}
+  soundManager: {fileID: 519793598}
 --- !u!61 &1052291330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1230,6 +1273,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1926281622199020, guid: d9bbd3cc60a4fcc42b44705db0da11bc,
     type: 2}
   bulletPosition: {fileID: 2053501166}
+  soundManager: {fileID: 519793598}
 --- !u!61 &1470464918
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1368,6 +1412,7 @@ MonoBehaviour:
   charac3: {fileID: 1052291328}
   bulletPrefab: {fileID: 0}
   bulletPosition: {fileID: 0}
+  soundManager: {fileID: 519793598}
 --- !u!50 &1504309314
 Rigidbody2D:
   serializedVersion: 4
