@@ -2236,6 +2236,8 @@ MonoBehaviour:
   BarrierPrefab: {fileID: 1371894280975914, guid: 6edbda752797590428d0ec3b8ab3a482,
     type: 2}
   CoinPrefab: {fileID: 1728417810800226, guid: 184286ec7bb861843a837e00cf23260c, type: 2}
+  CoinPrefab1: {fileID: 1728417810800226, guid: f43c89578db44014ea62ca45d4db06d7,
+    type: 2}
   CoinMakePosition: {fileID: 1187270676}
   CoinMakePosition1: {fileID: 73384309}
   CoinMakePosition2: {fileID: 1283173756}
@@ -2248,6 +2250,7 @@ MonoBehaviour:
   HpSlider: {fileID: 1799650306}
   GaugeSlider: {fileID: 1550701548}
   coin: 0
+  bigCoin: 0
   DieText: {fileID: 1840377196}
   descrip: {fileID: 1911687994}
 --- !u!4 &1966597553

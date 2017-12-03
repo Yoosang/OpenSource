@@ -89,6 +89,12 @@ public class Character : MonoBehaviour
             Destroy(col.gameObject);
             soundManager.CoinSound(); //동전효과음
         }
+        if (col.transform.tag.Equals("bigCoin"))
+        {
+            GC.coin1++;
+            Destroy(col.gameObject);
+            soundManager.CoinSound(); //동전효과음
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)

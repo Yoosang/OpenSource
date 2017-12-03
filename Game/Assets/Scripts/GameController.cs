@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance() { return instance; }
     public GameObject enemyMakePosition;
     public GameObject SpikePrefab, BarrierPrefab;
-    public GameObject CoinPrefab, CoinMakePosition, CoinMakePosition1, CoinMakePosition2, CoinMakePosition3, CoinMakePosition4;
+    public GameObject CoinPrefab,CoinPrefab1, CoinMakePosition, CoinMakePosition1, CoinMakePosition2, CoinMakePosition3, CoinMakePosition4;
     public GameObject FloorPrefab;
     public Text ScoreText;
     public Text coinText;
@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     int score = 0;
 	int frame=0;
     public int coin = 0;
+    public int coin1 = 0;
     bool flag = true;
 	public static bool Gaugeflag = true;
 	public static GameObject enemyBarrier, enemySpike;
@@ -106,7 +107,7 @@ public class GameController : MonoBehaviour
                 }
                 
             }
-			if (frame % 170 == 0)
+			if (frame % 130 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition.transform.position, Quaternion.identity);
 
@@ -114,20 +115,20 @@ public class GameController : MonoBehaviour
 
 			if (frame % 170 == 0)
             {
-                GameObject x = Instantiate(CoinPrefab, CoinMakePosition1.transform.position, Quaternion.identity);
+                GameObject x = Instantiate(CoinPrefab1, CoinMakePosition1.transform.position, Quaternion.identity);
 
             }
-			if (frame % 170 == 0)
+			if (frame % 150 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition2.transform.position, Quaternion.identity);
 
             }
-			if (frame % 170 == 0)
+			if (frame % 120 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition3.transform.position, Quaternion.identity);
 
             }
-			if (frame % 170 == 0)
+			if (frame % 160 == 0)
             {
                 GameObject x = Instantiate(CoinPrefab, CoinMakePosition4.transform.position, Quaternion.identity);
 
@@ -143,8 +144,9 @@ public class GameController : MonoBehaviour
         }
 
         ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
-		coinText.text = "coin : " + coin;
-       
+		coinText.text = "coin : " + ((coin*10)+(coin1*50));
+        
+
     }
 
     public void GameOver()
