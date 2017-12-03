@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance() { return instance; }
     public GameObject enemyMakePosition;
     public GameObject SpikePrefab, BarrierPrefab;
+    public GameObject birdPrefab;
     public GameObject CoinPrefab,CoinPrefab1, CoinMakePosition, CoinMakePosition1, CoinMakePosition2, CoinMakePosition3, CoinMakePosition4;
     public GameObject FloorPrefab;
     public Text ScoreText;
@@ -79,6 +80,7 @@ public class GameController : MonoBehaviour
                 if(IsPlaying() == true)
                 {
                     int enemyNum = Random.Range(1, 3);
+                    Vector3 birdEnemyPos = new Vector3(10.45f, 0.5f, 0);
                     switch (enemyNum)
                     {   
                         case 1:
@@ -94,7 +96,8 @@ public class GameController : MonoBehaviour
                             break;
                         case 2:
                             enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
-							enemySpike.GetComponent<BoxCollider2D> ().isTrigger = false; 
+                            Instantiate(birdPrefab, birdEnemyPos, Quaternion.identity);
+                            enemySpike.GetComponent<BoxCollider2D> ().isTrigger = false; 
 							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) {  // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemySpike.GetComponent<MoveObject> ().speed = 0.3f;
 							}
