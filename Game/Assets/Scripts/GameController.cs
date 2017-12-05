@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public Text ScoreText;
     public Text coinText;
     public Slider HpSlider, GaugeSlider;
+	public GameObject GaugeEffect;
     int score = 0;
 	int frame=0;
     public int coin = 0;
@@ -30,7 +31,9 @@ public class GameController : MonoBehaviour
 	int count=0;
     float timer;
     Vector3 pos;
-
+	int effectCount=0;  
+	int destroyCount =0;  
+	GameObject effect1, effect2;
     public bool IsPlaying()
     {
         return isPlay;
@@ -68,9 +71,23 @@ public class GameController : MonoBehaviour
 				if (GaugeSlider.value == 1) {
 					Gaugeflag = false;
 				}
+				effectCount = 0;
+				if (destroyCount == 0) { // gauge effect 삭제
+					Destroy (effect1);
+					Destroy (effect2);
+				}
+				destroyCount++;
 			}
 			else if (Gaugeflag == false && HpSlider.value != 0) {   //게지가 꽉 찬 후 다시 줄어들기
 				GaugeSlider.value -= 0.0025f;  //0.0025
+				if (effectCount == 0) {  // gauge effect 생성
+					Vector3 gaugePos1 = new Vector3 (-2.1f, 4.4f,-1);
+					Vector3 gaugePos2 = new Vector3 (2.1f, 4.4f, -1);
+					effect1 = Instantiate (GaugeEffect, gaugePos1, Quaternion.identity);
+					effect2 = Instantiate (GaugeEffect, gaugePos2, Quaternion.identity);
+				}
+				effectCount++;
+				destroyCount = 0;
 				if (GaugeSlider.value == 0) {
 					Gaugeflag = true;
 				}
