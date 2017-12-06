@@ -21,7 +21,7 @@ public class MoveObject : MonoBehaviour
             return;
 
         transform.Translate(Vector2.left * speed);
-        if (transform.position.x < -100f)// 장애물을 넘어서 화면 밖으로 가면 삭제
+        if (transform.position.x < -100f || transform.position.y < -50f)// 장애물을 넘어서 화면 밖으로 가면 삭제
         {
             Destroy(gameObject);
         }

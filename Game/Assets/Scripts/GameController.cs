@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
 			if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 부스터 사용시에는 점수가 빨리 오름
 				score += 3;
 			} else {
-				score++;
+                score += 1;
 			}
 			if (Gaugeflag == true && HpSlider.value != 0) {   //게이지 채우기
 				GaugeSlider.value += 0.0015f;  //0.0015

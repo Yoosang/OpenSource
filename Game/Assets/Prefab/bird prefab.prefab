@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6706e8a4db1c1e543ab992e757091a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyEffect: {fileID: 0}
+  destroyEffect: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 2}
   speed: 0.2
 --- !u!212 &212931509104959204
 SpriteRenderer:
