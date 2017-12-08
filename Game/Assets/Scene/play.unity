@@ -2076,9 +2076,11 @@ MonoBehaviour:
   HpSlider: {fileID: 1799650306}
   GaugeSlider: {fileID: 1550701548}
   GaugeEffect: {fileID: 100000, guid: 7b5995237b3d6c04ebdbe491160493b8, type: 2}
+  coin: 0
+  bigCoin: 0
   DieText: {fileID: 1840377196}
   descrip: {fileID: 1911687994}
-  coinPos: []
+  coinPos: {x: 10, y: -2.7, z: 0}
 --- !u!4 &1966597553
 Transform:
   m_ObjectHideFlags: 0
