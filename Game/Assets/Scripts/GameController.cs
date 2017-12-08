@@ -10,9 +10,10 @@ public class GameController : MonoBehaviour
 
     public static GameController Instance() { return instance; }
     public GameObject enemyMakePosition;
-    public GameObject SpikePrefab, BarrierPrefab;
+	public GameObject SpikePrefab;
+	public GameObject BarrierPrefab;
     public GameObject birdPrefab;
-    public GameObject CoinPrefab,CoinPrefab1, CoinMakePosition, CoinMakePosition1, CoinMakePosition2, CoinMakePosition3, CoinMakePosition4;
+	public GameObject CoinPrefab,bigCoinPrefab;
     public GameObject FloorPrefab;
     public Text ScoreText;
     public Text coinText;
@@ -20,8 +21,8 @@ public class GameController : MonoBehaviour
 	public GameObject GaugeEffect;
     int score = 0;
 	int frame=0;
-    public int coin = 0;
-    public int coin1 = 0;
+   	public int coin = 0;
+    public int bigCoin = 0;
     bool flag = true;
 	public static bool Gaugeflag = true;
 	public static GameObject enemyBarrier, enemySpike;
@@ -34,6 +35,9 @@ public class GameController : MonoBehaviour
 	int effectCount=0;  
 	int destroyCount =0;  
 	GameObject effect1, effect2;
+	public Vector3 coinPos;
+	Vector3 aboveBarrierPos;
+	public static GameObject Coin;
     public bool IsPlaying()
     {
         return isPlay;
@@ -42,6 +46,8 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         instance = this;
+		aboveBarrierPos = enemyMakePosition.transform.position;;
+		aboveBarrierPos.y += 2.3f;
     }
 
     void Update()
@@ -61,6 +67,9 @@ public class GameController : MonoBehaviour
             }
 
             frame++;  // 프레임마다 1점씩 증가
+			if (frame % 17 == 0) {
+				Coin = Instantiate (CoinPrefab, coinPos, Quaternion.identity);
+			}
 			if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 부스터 사용시에는 점수가 빨리 오름
 				score += 3;
 			} else {
@@ -102,6 +111,7 @@ public class GameController : MonoBehaviour
                     {   
                         case 1:
                             enemyBarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
+							Instantiate (bigCoinPrefab, aboveBarrierPos, Quaternion.identity);
 							enemyBarrier.GetComponent<BoxCollider2D> ().isTrigger = false; 
 							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemyBarrier.GetComponent<MoveObject> ().speed = 0.3f;
@@ -113,6 +123,7 @@ public class GameController : MonoBehaviour
                             break;
                         case 2:
                             enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
+							Instantiate (bigCoinPrefab, aboveBarrierPos, Quaternion.identity);
                             Instantiate(birdPrefab, birdEnemyPos, Quaternion.identity);
                             enemySpike.GetComponent<BoxCollider2D> ().isTrigger = false; 
 							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) {  // 캐릭터2 필살기 장애물 속도 빠르게 
@@ -127,32 +138,7 @@ public class GameController : MonoBehaviour
                 }
                 
             }
-			if (frame % 130 == 0)
-            {
-                GameObject x = Instantiate(CoinPrefab, CoinMakePosition.transform.position, Quaternion.identity);
 
-            }
-
-			if (frame % 170 == 0)
-            {
-                GameObject x = Instantiate(CoinPrefab1, CoinMakePosition1.transform.position, Quaternion.identity);
-
-            }
-			if (frame % 150 == 0)
-            {
-                GameObject x = Instantiate(CoinPrefab, CoinMakePosition2.transform.position, Quaternion.identity);
-
-            }
-			if (frame % 120 == 0)
-            {
-                GameObject x = Instantiate(CoinPrefab, CoinMakePosition3.transform.position, Quaternion.identity);
-
-            }
-			if (frame % 160 == 0)
-            {
-                GameObject x = Instantiate(CoinPrefab, CoinMakePosition4.transform.position, Quaternion.identity);
-
-            }
             if (Gaugeflag == false && SelectCharacter.characterNumber == 1 && count<100) {  // 필살기 사용 설명 나옴
 				count++;
 				descrip.enabled = true;
@@ -164,8 +150,9 @@ public class GameController : MonoBehaviour
         }
 
         ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
-		coinText.text = "coin : " + ((coin*10)+(coin1*50));
+		coinText.text = "coin : " + ((coin*10)+(bigCoin*50));
         
+
 
     }
 

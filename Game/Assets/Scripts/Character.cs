@@ -73,7 +73,7 @@ public class Character : MonoBehaviour
 			}
 
 		} 
-		else if (GameController.Gaugeflag == true) {
+		else if (SelectCharacter.characterNumber == 3 && GameController.Gaugeflag == true) {
 			rend.material.color = new Color (rend.material.color.r, rend.material.color.g, rend.material.color.b, 1f); // 원래 색으로 
 
 		}
@@ -85,13 +85,13 @@ public class Character : MonoBehaviour
     {
         if (col.transform.tag.Equals("Coin"))
         {
-            GC.coin++;
+           	GC.coin++;
             Destroy(col.gameObject);
             soundManager.CoinSound(); //동전효과음
         }
         if (col.transform.tag.Equals("bigCoin"))
         {
-            GC.coin1++;
+          	GC.bigCoin++;
             Destroy(col.gameObject);
             soundManager.CoinSound(); //동전효과음
         }
@@ -107,7 +107,7 @@ public class Character : MonoBehaviour
 			else if (GameController.Gaugeflag == false && SelectCharacter.characterNumber==1) { // 1번 캐릭터 제외, 필살기를 사용중에는 hp가 닳지 않음
 				HpSlider.value -= 0.01f;
 			} 
-			col.transform.GetComponent<MoveObject> ().DestroyBarrier ();
+			col.transform.GetComponent<MoveObject> ().DestroyEffect();
 			Destroy (col.gameObject);
 
 		}

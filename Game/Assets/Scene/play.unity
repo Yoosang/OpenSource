@@ -168,39 +168,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e4266461df1933458c4b4cba2bbef2d, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &73384309
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 73384310}
-  m_Layer: 5
-  m_Name: coinposition1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &73384310
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 73384309}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 76.8, y: 76.8, z: 76.8}
-  m_Children: []
-  m_Father: {fileID: 531501035}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200.3291, y: 40.58263}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &91502462
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,13 +403,8 @@ RectTransform:
   - {fileID: 850484894}
   - {fileID: 1840377195}
   - {fileID: 1880027926}
-  - {fileID: 1187270677}
   - {fileID: 1911687993}
   - {fileID: 1193503746}
-  - {fileID: 1690987189}
-  - {fileID: 73384310}
-  - {fileID: 1283173757}
-  - {fileID: 1568169341}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -880,39 +842,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1187270676
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1187270677}
-  m_Layer: 5
-  m_Name: CoinMakePostion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1187270677
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1187270676}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 76.8, y: 76.8, z: 76.8}
-  m_Children: []
-  m_Father: {fileID: 531501035}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430.3291, y: 80.58263}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1193503745
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +870,7 @@ RectTransform:
   m_LocalScale: {x: 3.3983526, y: 3.3983521, z: 3.3983521}
   m_Children: []
   m_Father: {fileID: 531501035}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -987,39 +916,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'coin : 0'
---- !u!1 &1283173756
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1283173757}
-  m_Layer: 5
-  m_Name: coinposition2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1283173757
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1283173756}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 76.8, y: 76.8, z: 76.8}
-  m_Children: []
-  m_Father: {fileID: 531501035}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600.3291, y: 80.58263}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1294917642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,72 +1578,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &1568169340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1568169341}
-  m_Layer: 5
-  m_Name: coinposition3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1568169341
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1568169340}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 76.8, y: 76.8, z: 76.8}
-  m_Children: []
-  m_Father: {fileID: 531501035}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 330.33, y: 40.583}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1690987188
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1690987189}
-  m_Layer: 5
-  m_Name: coinposition4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1690987189
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1690987188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 76.8, y: 76.8, z: 76.8}
-  m_Children: []
-  m_Father: {fileID: 531501035}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500.3291, y: 100.58263}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1778240633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,7 +1986,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 531501035}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2237,13 +2067,8 @@ MonoBehaviour:
     type: 2}
   birdPrefab: {fileID: 1913873225011042, guid: 9bba956a2d99dc046bd781aa986dc295, type: 2}
   CoinPrefab: {fileID: 1728417810800226, guid: 184286ec7bb861843a837e00cf23260c, type: 2}
-  CoinPrefab1: {fileID: 1728417810800226, guid: f43c89578db44014ea62ca45d4db06d7,
+  bigCoinPrefab: {fileID: 1728417810800226, guid: f43c89578db44014ea62ca45d4db06d7,
     type: 2}
-  CoinMakePosition: {fileID: 1187270676}
-  CoinMakePosition1: {fileID: 73384309}
-  CoinMakePosition2: {fileID: 1283173756}
-  CoinMakePosition3: {fileID: 1568169340}
-  CoinMakePosition4: {fileID: 1690987188}
   FloorPrefab: {fileID: 1315962637117406, guid: 1e4266461df1933458c4b4cba2bbef2d,
     type: 2}
   ScoreText: {fileID: 905429142}
@@ -2251,10 +2076,9 @@ MonoBehaviour:
   HpSlider: {fileID: 1799650306}
   GaugeSlider: {fileID: 1550701548}
   GaugeEffect: {fileID: 100000, guid: 7b5995237b3d6c04ebdbe491160493b8, type: 2}
-  coin: 0
-  coin1: 0
   DieText: {fileID: 1840377196}
   descrip: {fileID: 1911687994}
+  coinPos: []
 --- !u!4 &1966597553
 Transform:
   m_ObjectHideFlags: 0

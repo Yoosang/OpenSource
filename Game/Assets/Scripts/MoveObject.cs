@@ -7,7 +7,7 @@ public class MoveObject : MonoBehaviour
 	GameObject effect;
 	public GameObject destroyEffect;
     public float speed ;
-	int count=0;
+	int destroyCount;
     void Start()
     {
         
@@ -15,8 +15,7 @@ public class MoveObject : MonoBehaviour
     }
     void Update()
     {
-
-		count++;
+		destroyCount++;
         if (GameController.Instance().IsPlaying() == false)
             return;
 
@@ -25,16 +24,25 @@ public class MoveObject : MonoBehaviour
         {
             Destroy(gameObject);
         }
-		if (count == 10)  //effect삭제
-			Destroy (effect); 
+		//if (destroyCount == 10) {
+		//	Debug.Log ("asldjfa;lskjdf");
+		//	Destroy (effect);
+		//}
     }
 
 
-	public void DestroyBarrier(){
+	public void DestroyEffect(){
 		if (destroyEffect != null) {
 			effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+			destroyCount = 0;
 		}
-		count = 0;  
 	}
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.transform.tag.Equals("Coin"))   // 장애물이랑 코인이랑 겹치지 않게
+		{
+			Destroy(col.gameObject);
+		}
 
+	}
 }
