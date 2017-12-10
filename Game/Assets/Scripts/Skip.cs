@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Skip : MonoBehaviour {
 	public float delayTime = 3;
+    public SoundManager sound;
 	// Use this for initialization
 	IEnumerator Start () {
-		yield return new WaitForSeconds(delayTime);
+        sound.StartSound();
+     
 
+		yield return new WaitForSeconds(delayTime);
+    
 		Application.LoadLevel ("Menu");
 	}
 

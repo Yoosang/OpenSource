@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public AudioClip jumpSound;
     public AudioClip coinSound;
+    public AudioClip startSound;
 
     // 효과음 함수
     public void JumpSound()
@@ -18,4 +19,10 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(coinSound, Camera.main.transform.position);
     }
+
+    public void StartSound()
+    {
+        AudioSource.PlayClipAtPoint(startSound, Camera.main.transform.position);
+    }
+
 }

@@ -5,39 +5,24 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    // 싱글톤
     static GameController instance; 
 
     public static GameController Instance() { return instance; }
-    public GameObject enemyMakePosition;
-	public GameObject SpikePrefab;
-	public GameObject BarrierPrefab;
-    public GameObject birdPrefab;
-	public GameObject CoinPrefab,bigCoinPrefab;
-    public GameObject FloorPrefab;
-    public Text ScoreText;
-    public Text coinText;
+    public GameObject enemyMakePosition,SpikePrefab,BarrierPrefab,birdPrefab,CoinPrefab,bigCoinPrefab,FloorPrefab;
+    public Text ScoreText, coinText, DieText, descrip;
     public Slider HpSlider, GaugeSlider;
 	public GameObject GaugeEffect;
-    int score = 0;
-	int frame=0;
-   	public int coin = 0;
-    public int bigCoin = 0;
+    int score, count,frame, effectCount, destroyCount = 0;
+   	public int coin, bigCoin = 0;
     bool flag = true;
-	public static bool Gaugeflag = true;
-	public static GameObject enemyBarrier, enemySpike;
+	public bool Gaugeflag = true;
+	public GameObject enemyBarrier, enemySpike;
     bool isPlay = true;
-    public Text DieText;
-	public Text descrip;
-	int count=0;
     float timer;
-    Vector3 pos;
-	int effectCount=0;  
-	int destroyCount =0;  
-	GameObject effect1, effect2;
+    Vector3 floorPos, aboveBarrierPos, gaugePos1, gaugePos2; 
+	GameObject effect1, effect2, Coin;
 	public Vector3 coinPos;
-	Vector3 aboveBarrierPos;
-	public static GameObject Coin;
+
     public bool IsPlaying()
     {
         return isPlay;
@@ -48,6 +33,9 @@ public class GameController : MonoBehaviour
         instance = this;
 		aboveBarrierPos = enemyMakePosition.transform.position;;
 		aboveBarrierPos.y += 2.3f;
+        floorPos = new Vector3(27, -4, 0);
+        gaugePos1 = new Vector3(-2.1f, 4.4f, -1);
+        gaugePos2 = new Vector3(2.1f, 4.4f, -1);
     }
 
     void Update()
@@ -58,23 +46,24 @@ public class GameController : MonoBehaviour
         if (IsPlaying() == true)
         {
             timer += 0.025f;
-            pos = new Vector3(27, -4, 0);
+            frame++;  // 프레임마다 1점씩 증가
 
             if (timer > 8f) //시간에 따라 땅 생성
             {
-                Instantiate(FloorPrefab, pos, Quaternion.identity);
+                Instantiate(FloorPrefab, floorPos, Quaternion.identity);
                 timer = 0;
             }
-
-            frame++;  // 프레임마다 1점씩 증가
+           
 			if (frame % 17 == 0) {
 				Coin = Instantiate (CoinPrefab, coinPos, Quaternion.identity);
 			}
+
 			if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 부스터 사용시에는 점수가 빨리 오름
 				score += 3;
 			} else {
                 score += 1;
 			}
+
 			if (Gaugeflag == true && HpSlider.value != 0) {   //게이지 채우기
 				GaugeSlider.value += 0.0015f;  //0.0015
 				if (GaugeSlider.value == 1) {
@@ -90,8 +79,6 @@ public class GameController : MonoBehaviour
 			else if (Gaugeflag == false && HpSlider.value != 0) {   //게지가 꽉 찬 후 다시 줄어들기
 				GaugeSlider.value -= 0.0025f;  //0.0025
 				if (effectCount == 0) {  // gauge effect 생성
-					Vector3 gaugePos1 = new Vector3 (-2.1f, 4.4f,-1);
-					Vector3 gaugePos2 = new Vector3 (2.1f, 4.4f, -1);
 					effect1 = Instantiate (GaugeEffect, gaugePos1, Quaternion.identity);
 					effect2 = Instantiate (GaugeEffect, gaugePos2, Quaternion.identity);
 				}
@@ -112,27 +99,20 @@ public class GameController : MonoBehaviour
                         case 1:
                             enemyBarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
 							Instantiate (bigCoinPrefab, aboveBarrierPos, Quaternion.identity);
-							enemyBarrier.GetComponent<BoxCollider2D> ().isTrigger = false; 
 							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemyBarrier.GetComponent<MoveObject> ().speed = 0.3f;
 							}
-							else if (Gaugeflag == false && SelectCharacter.characterNumber == 3) { // 투명화 상태에서는 장애물을 파괴하지 않게 
-								enemyBarrier.GetComponent<BoxCollider2D> ().isTrigger = true; 
-							}
-							enemyBarrier.gameObject.tag = "enemy";
+
                             break;
                         case 2:
                             enemySpike = Instantiate(SpikePrefab, enemyMakePosition.transform.position, Quaternion.identity);
 							Instantiate (bigCoinPrefab, aboveBarrierPos, Quaternion.identity);
                             Instantiate(birdPrefab, birdEnemyPos, Quaternion.identity);
-                            enemySpike.GetComponent<BoxCollider2D> ().isTrigger = false; 
+              
 							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) {  // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemySpike.GetComponent<MoveObject> ().speed = 0.3f;
 							}
-							else if (Gaugeflag == false && SelectCharacter.characterNumber == 3) { // 투명화 상태에서는 장애물을 파괴하지 않게 
-								enemySpike.GetComponent<BoxCollider2D> ().isTrigger = true; 
-							}
-							enemySpike.gameObject.tag = "enemy";
+							
                             break;
                     }
                 }
@@ -150,7 +130,7 @@ public class GameController : MonoBehaviour
         }
 
         ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
-		coinText.text = "coin : " + ((coin*10)+(bigCoin*50));
+        coinText.text = "coin : " + ((coin*10)+(bigCoin*50));
         
 
 

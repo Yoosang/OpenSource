@@ -8,6 +8,9 @@ TagManager:
   - Coin
   - ground
   - enemy
+  - effect
+  - character
+  - bigCoin
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,6 @@ public class MoveObject : MonoBehaviour
 	GameObject effect;
 	public GameObject destroyEffect;
     public float speed ;
-	int destroyCount;
     void Start()
     {
         
@@ -15,26 +14,22 @@ public class MoveObject : MonoBehaviour
     }
     void Update()
     {
-		destroyCount++;
+		
         if (GameController.Instance().IsPlaying() == false)
             return;
 
         transform.Translate(Vector2.left * speed);
-        if (transform.position.x < -100f || transform.position.y < -50f)// 장애물을 넘어서 화면 밖으로 가면 삭제
+        if (transform.position.x < -50f || transform.position.y < -50f)// 장애물을 넘어서 화면 밖으로 가면 삭제
         {
             Destroy(gameObject);
         }
-		//if (destroyCount == 10) {
-		//	Debug.Log ("asldjfa;lskjdf");
-		//	Destroy (effect);
-		//}
+
     }
 
 
 	public void DestroyEffect(){
 		if (destroyEffect != null) {
-			effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-			destroyCount = 0;
+			Instantiate(destroyEffect, transform.position, Quaternion.identity);
 		}
 	}
 	void OnTriggerEnter2D(Collider2D col)
@@ -45,4 +40,13 @@ public class MoveObject : MonoBehaviour
 		}
 
 	}
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "character")
+        {
+            DestroyEffect();   
+        }
+    }
+
 }
