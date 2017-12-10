@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
         instance = this;
 		aboveBarrierPos = enemyMakePosition.transform.position;;
 		aboveBarrierPos.y += 2.3f;
-        floorPos = new Vector3(27, -4, 0);
+        floorPos = new Vector3(27, -4, -1);
         gaugePos1 = new Vector3(-2.1f, 4.4f, -1);
         gaugePos2 = new Vector3(2.1f, 4.4f, -1);
     }
@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
                 if(IsPlaying() == true)
                 {
                     int enemyNum = Random.Range(1, 3);
-                    Vector3 birdEnemyPos = new Vector3(10.45f, 0.5f, 0);
+                    Vector3 birdEnemyPos = new Vector3(10.45f, 0.5f, -1);
                     switch (enemyNum)
                     {   
                         case 1:
