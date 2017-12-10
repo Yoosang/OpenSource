@@ -32,6 +32,7 @@ public class MoveObject : MonoBehaviour
 			Instantiate(destroyEffect, transform.position, Quaternion.identity);
 		}
 	}
+	/*
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.transform.tag.Equals("Coin"))   // 장애물이랑 코인이랑 겹치지 않게
@@ -40,13 +41,17 @@ public class MoveObject : MonoBehaviour
 		}
 
 	}
-
+*/
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "character")
         {
             DestroyEffect();   
         }
+		if (destroyEffect != null && col.transform.tag.Equals("Coin"))   // 장애물이랑 코인이랑 겹치지 않게
+		{
+			Destroy(col.gameObject);
+		}
     }
 
 }

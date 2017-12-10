@@ -2081,7 +2081,7 @@ MonoBehaviour:
   Gaugeflag: 1
   enemyBarrier: {fileID: 0}
   enemySpike: {fileID: 0}
-  coinPos: {x: 10, y: -2.7, z: 0}
+  coinPos: {x: 14, y: -3, z: 0}
 --- !u!4 &1966597553
 Transform:
   m_ObjectHideFlags: 0

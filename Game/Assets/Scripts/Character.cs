@@ -15,25 +15,14 @@ public class Character : MonoBehaviour
     int jumpCount = 2; // 2단 점프를 위한 점프수 제한
     public SoundManager soundManager; //효과음 변수
 
-    void Start(){ //캐릭터 선택시 한 명씩 나오게
+    void Start(){
 		
 		rot = transform.localRotation;
 		rot.eulerAngles = new Vector3 (0, 0, -90);
-		if (SelectCharacter.characterNumber == 1) {
-			Destroy (charac2);
-			Destroy (charac3);
-		}
-		else if (SelectCharacter.characterNumber == 2) {
-			Destroy (charac1);
-			Destroy (charac3);
-		}
-		else if (SelectCharacter.characterNumber == 3) {
-			Destroy (charac1);
-			Destroy (charac2);
-		}
 		rend = charac3.GetComponent<Renderer> ();
         jumpCount = 0; //시작 할때 점프수를 0으로 초기화
 
+		selectCharac ();
     }
     // Update is called once per frame
     void Update()
@@ -60,33 +49,20 @@ public class Character : MonoBehaviour
             Time.timeScale = 0; // 죽었을 때 캐릭터 모습이 없어서 정지 기킨 것
         }
 
-		if (GameController.Instance().Gaugeflag == false) {  // 캐릭터 선택에 따른 필살기 
-
-			if (SelectCharacter.characterNumber == 1) {  // 슈팅
-				Shooting();
-			}
-			else if (SelectCharacter.characterNumber == 3) {
-				rend.material.color = new Color (rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.4f);  // 투명화
-			
-			}
-
-		} 
+		if (GameController.Instance ().CanShooting()) {
+			Shooting ();
+		}
+		else if(GameController.Instance().CanTransparency()){
+			rend.material.color = new Color (rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.4f);  // 투명화
+		}
 		else if (SelectCharacter.characterNumber == 3 && GameController.Instance().Gaugeflag == true) {
 			rend.material.color = new Color (rend.material.color.r, rend.material.color.g, rend.material.color.b, 1f); // 원래 색으로 
-
 		}
 
     }
 
-
-    void OnTriggerEnter2D(Collider2D col)
+	   void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.transform.tag.Equals("Coin"))
-        {
-           	GameController.Instance().coin++;
-            Destroy(col.gameObject);
-            soundManager.CoinSound(); //동전효과음
-        }
         if (col.transform.tag.Equals("bigCoin"))
         {
            
@@ -102,7 +78,7 @@ public class Character : MonoBehaviour
 		{
 			if(GameController.Instance().Gaugeflag == true)
 				HpSlider.value -= 0.1f;
-			else if (GameController.Instance().Gaugeflag == false && SelectCharacter.characterNumber==1) { // 1번 캐릭터 제외, 필살기를 사용중에는 hp가 닳지 않음
+			else if (GameController.Instance().CanShooting()) { // 1번 캐릭터 제외, 필살기를 사용중에는 hp가 닳지 않음
 				HpSlider.value -= 0.1f;
 			}
 			Destroy (col.gameObject);
@@ -113,6 +89,14 @@ public class Character : MonoBehaviour
             isGround = true;
             jumpCount = 2; // 땅에 있으면 점프수 2로 초기화
         }
+
+		if (col.transform.tag.Equals("Coin"))
+		{
+			GameController.Instance().coin++;
+			Destroy(col.gameObject);
+			soundManager.CoinSound(); //동전효과음
+		}
+
     }
 
     
@@ -126,4 +110,21 @@ public class Character : MonoBehaviour
 		} 
 		bull.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 100f);  // 총알을 오른쪽으로 나게 함
 	}
+
+
+	void selectCharac(){
+		if (SelectCharacter.characterNumber == 1) {
+			Destroy (charac2);
+			Destroy (charac3);
+		}
+		else if (SelectCharacter.characterNumber == 2) {
+			Destroy (charac1);
+			Destroy (charac3);
+		}
+		else if (SelectCharacter.characterNumber == 3) {
+			Destroy (charac1);
+			Destroy (charac2);
+		}
+	}
+
 }

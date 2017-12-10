@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
         {
             timer += 0.025f;
             frame++;  // 프레임마다 1점씩 증가
+			updateScore();
 
             if (timer > 8f) //시간에 따라 땅 생성
             {
@@ -58,13 +59,8 @@ public class GameController : MonoBehaviour
 				Coin = Instantiate (CoinPrefab, coinPos, Quaternion.identity);
 			}
 
-			if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 부스터 사용시에는 점수가 빨리 오름
-				score += 3;
-			} else {
-                score += 1;
-			}
 
-			if (Gaugeflag == true && HpSlider.value != 0) {   //게이지 채우기
+			if (Gaugeflag == true) {   //게이지 채우기
 				GaugeSlider.value += 0.0015f;  //0.0015
 				if (GaugeSlider.value == 1) {
 					Gaugeflag = false;
@@ -76,7 +72,7 @@ public class GameController : MonoBehaviour
 				}
 				destroyCount++;
 			}
-			else if (Gaugeflag == false && HpSlider.value != 0) {   //게지가 꽉 찬 후 다시 줄어들기
+			else if (Gaugeflag == false) {   //게지가 꽉 찬 후 다시 줄어들기
 				GaugeSlider.value -= 0.0025f;  //0.0025
 				if (effectCount == 0) {  // gauge effect 생성
 					effect1 = Instantiate (GaugeEffect, gaugePos1, Quaternion.identity);
@@ -99,7 +95,7 @@ public class GameController : MonoBehaviour
                         case 1:
                             enemyBarrier = Instantiate(BarrierPrefab, enemyMakePosition.transform.position, Quaternion.identity);
 							Instantiate (bigCoinPrefab, aboveBarrierPos, Quaternion.identity);
-							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) { // 캐릭터2 필살기 장애물 속도 빠르게 
+							if (CanBoosting()) { // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemyBarrier.GetComponent<MoveObject> ().speed = 0.3f;
 							}
 
@@ -109,7 +105,7 @@ public class GameController : MonoBehaviour
 							Instantiate (bigCoinPrefab, aboveBarrierPos, Quaternion.identity);
                             Instantiate(birdPrefab, birdEnemyPos, Quaternion.identity);
               
-							if (Gaugeflag == false && SelectCharacter.characterNumber == 2) {  // 캐릭터2 필살기 장애물 속도 빠르게 
+							if (CanBoosting()) {  // 캐릭터2 필살기 장애물 속도 빠르게 
 								enemySpike.GetComponent<MoveObject> ().speed = 0.3f;
 							}
 							
@@ -119,7 +115,7 @@ public class GameController : MonoBehaviour
                 
             }
 
-            if (Gaugeflag == false && SelectCharacter.characterNumber == 1 && count<100) {  // 필살기 사용 설명 나옴
+			if (CanShooting() && count<100) {  // 필살기 사용 설명 나옴
 				count++;
 				descrip.enabled = true;
 			}
@@ -128,13 +124,9 @@ public class GameController : MonoBehaviour
         {
             GameOver();
         }
-
-        ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시   
-        coinText.text = "coin : " + ((coin*10)+(bigCoin*50));
-        
-
-
+   
     }
+
 
     public void GameOver()
     {
@@ -146,4 +138,35 @@ public class GameController : MonoBehaviour
             Application.LoadLevel("Menu");
         }
     }
+
+
+
+	public void updateScore(){
+		if (CanBoosting()) { // 부스터 사용시에는 점수가 빨리 오름
+			score += 3;
+		} else {
+			score += 1;
+		}
+		ScoreText.text = "score : " + (score) / 10;  // 점수 증가 & 표시
+		coinText.text = "coin : " + ((coin*10)+(bigCoin*50));
+	}
+
+	public bool CanShooting(){
+		if (Gaugeflag == false && SelectCharacter.characterNumber == 1)
+			return true;
+		return false;
+	}
+
+	public bool CanBoosting(){
+		if (Gaugeflag == false && SelectCharacter.characterNumber == 2)
+			return true;
+		return false;
+	}
+
+	public bool CanTransparency(){
+		if (Gaugeflag == false && SelectCharacter.characterNumber == 3)
+			return true;
+		return false;
+	}
+
 }
